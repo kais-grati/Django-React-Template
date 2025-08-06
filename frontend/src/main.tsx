@@ -9,6 +9,7 @@ import Page1 from "./pages/Page1";
 import Page2 from "./pages/Page2";
 import Page3 from "./pages/Page3";
 import Register from "./pages/Register";
+import NotFound from "./pages/NotFound";
 
 function Layout() {
   return (
@@ -31,7 +32,8 @@ const router = createBrowserRouter([
     ],
   },
   { path: "/login", element: <Login /> },
-  { path: "/register", element: <Register /> }
+  { path: "/register", element: <Register /> },
+  { path: "*", element: <NotFound /> }
 ]);
 
 createRoot(document.getElementById("root")!).render(

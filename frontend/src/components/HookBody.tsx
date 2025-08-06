@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function HookBody() {
   return (
     <div className="flex flex-col items-center text-center justify-center py-40">
@@ -9,6 +11,9 @@ function HookBody() {
         Well suited for SAASs and E-Commerce web apps. <br></br>
         We provide the core features you focus on the main ones.
       </h2>
+      <Link to="/" className="px-4 py-3 text-3xl font-lexend rounded-full bg-black text-white hover:bg-blue-950">
+        Get Started now
+      </Link>
     </div>
   );
 }
