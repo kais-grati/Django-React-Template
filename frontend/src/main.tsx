@@ -10,12 +10,14 @@ import Page2 from "./pages/Page2";
 import Page3 from "./pages/Page3";
 import Register from "./pages/Register";
 import NotFound from "./pages/NotFound";
+import Footer from "./components/Footer";
 
 function Layout() {
   return (
     <>
       <Navbar />
       <Outlet />
+      <Footer />
     </>
   );
 }
