@@ -41,10 +41,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'api',
+    'authentication',
     'corsheaders'
 ]
 
-AUTH_USER_MODEL = 'api.CustomUser'
+AUTH_USER_MODEL = 'authentication.CustomUser'
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
@@ -57,7 +58,7 @@ REST_FRAMEWORK = {
 
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30),
-    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=14),
 }
 
 MIDDLEWARE = [
