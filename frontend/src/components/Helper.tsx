@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { TokenContext } from "../app";
+import { TokenContext } from "../App";
 
 export function getErrorMessage(error: unknown): string {
   if (error instanceof Error) return error.message;
