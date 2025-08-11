@@ -1,45 +1,10 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import "./main.css";
-import Landing from "./pages/Landing";
-import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
-import Login from "./pages/Login";
-import Navbar from "./components/Navbar";
-import Page1 from "./pages/Page1";
-import Page2 from "./pages/Page2";
-import Page3 from "./pages/Page3";
-import Register from "./pages/Register";
-import NotFound from "./pages/NotFound";
-import Footer from "./components/Footer";
-
-function Layout() {
-  return (
-    <>
-      <Navbar />
-      <Outlet />
-      <Footer />
-    </>
-  );
-}
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Layout />,
-    children: [
-      { path: "/", element: <Landing /> },
-      { path: "/page1", element: <Page1 /> },
-      { path: "/page2", element: <Page2 /> },
-      { path: "/page3", element: <Page3 /> },
-    ],
-  },
-  { path: "/login", element: <Login /> },
-  { path: "/register", element: <Register /> },
-  { path: "*", element: <NotFound /> }
-]);
+import "./assets/styles/main.css";
+import App from "./app";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <RouterProvider router={router}></RouterProvider>
+    <App />
   </StrictMode>
 );

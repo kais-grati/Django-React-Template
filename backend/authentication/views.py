@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.exceptions import TokenError
 from django.contrib.auth import authenticate
-from backend.settings import SIMPLE_JWT
+from backend.settings import SIMPLE_JWT, DEBUG
 from .serializers import RegistrationSerializer, LoginSerializer, UserSerializer
 from .models import CustomUser
 
@@ -14,6 +14,34 @@ class RegisterView(generics.CreateAPIView):
     queryset = CustomUser.objects.all()
     serializer_class = RegistrationSerializer
     permission_classes = [AllowAny]
+    
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        
+        user = serializer.save()
+        
+        refresh = RefreshToken.for_user(user)
+        access_token = refresh.access_token
+        
+        response_data = {
+            'user': UserSerializer(user).data,
+            'accessToken': str(access_token),
+            'message': 'User registered successfully'
+        }
+        
+        response = Response(response_data, status=status.HTTP_201_CREATED)
+        
+        response.set_cookie(
+            'refreshToken',
+            str(refresh),
+            max_age=SIMPLE_JWT["REFRESH_TOKEN_LIFETIME"].days*24*60*60,
+            httponly=True,
+            secure=True,
+            samesite='Strict'
+        )
+        
+        return response
 
 
 class LoginView(APIView):
@@ -22,7 +50,11 @@ class LoginView(APIView):
     
     def post(self, request):
         serializer = LoginSerializer(data=request.data)
-        print(serializer.is_valid(raise_exception=True))
+        if not serializer.is_valid():
+            return Response(
+                {'error': 'Invalid credentials'}, 
+                status=status.HTTP_401_UNAUTHORIZED
+            ) 
         
         user = authenticate(
             email=serializer.validated_data['email'],
@@ -50,7 +82,7 @@ class LoginView(APIView):
             max_age=SIMPLE_JWT["REFRESH_TOKEN_LIFETIME"].days*24*60*60,  
             httponly=True,
             secure=True,
-            samesite='Strict'
+            samesite='Lax'
         )
         
         return response

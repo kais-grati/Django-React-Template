@@ -4,7 +4,7 @@ from .models import CustomUser
 class RegistrationSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
-        fields = ["email", "password", "first_name", "last_name"]
+        fields = ["email", "password", "first_name", "last_name", "receive_emails"]
         extra_kwargs = {
             "password": {
                 "write_only": True,
@@ -40,6 +40,7 @@ class UserSerializer(serializers.ModelSerializer):
             'email', 
             'first_name', 
             'last_name', 
-            'date_joined'
+            'date_joined',
+            'receive_emails'
         ]
         read_only_fields = ['id', 'date_joined']

@@ -1,4 +1,4 @@
-import HookBody from "../components/HookBody";
+import HookBody from "../components/UI/HookBody";
 
 function Landing() {
   return (
