@@ -32,14 +32,10 @@ function App() {
                 setAccessToken(data.accessToken);
                 setApiToken(data.accessToken);
                 setIsAuthenticated(true);
-            } else if (data?.error) {
-                console.error("Refresh failed:", data.error);
-                setIsAuthenticated(false);
             } else {
                 setIsAuthenticated(false);
             }
         } catch (error) {
-            console.error("Refresh request failed:", error);
             setIsAuthenticated(false);
         }
     };

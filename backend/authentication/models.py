@@ -41,3 +41,11 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
+    
+class NewsletterSubscriber(models.Model):
+    email = models.EmailField(unique=True)
+
+    def __str__(self):
+        return self.email
+
+

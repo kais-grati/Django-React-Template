@@ -129,7 +129,6 @@ function Register() {
             } else {
                 setError("An unexpected error occurred. Please try again.");
             }
-            console.error("Registration error:", error);
         } finally {
             setLoading(false);
         }

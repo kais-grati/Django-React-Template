@@ -43,7 +43,6 @@ function ProtectedRoute({ children }: ProtectedRouteProps) {
                 setIsAuthenticated(true);
             }
         } catch (error) {
-            console.error("Token validation failed:", error);
             setIsAuthenticated(false);
         }
     };
@@ -57,14 +56,10 @@ function ProtectedRoute({ children }: ProtectedRouteProps) {
                 setAccessToken(data.accessToken);
                 setApiToken(data.accessToken);
                 setIsAuthenticated(true);
-            } else if (data?.error) {
-                console.error("Refresh failed:", data.error);
-                setIsAuthenticated(false);
             } else {
                 setIsAuthenticated(false);
             }
         } catch (error) {
-            console.error("Refresh request failed:", error);
             setIsAuthenticated(false);
         }
     };

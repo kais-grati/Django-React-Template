@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import CustomUser
+from .models import CustomUser, NewsletterSubscriber
 
 class RegistrationSerializer(serializers.ModelSerializer):
     class Meta:
@@ -44,3 +44,11 @@ class UserSerializer(serializers.ModelSerializer):
             'receive_emails'
         ]
         read_only_fields = ['id', 'date_joined']
+
+class NewsletterSubscriberSerializer(serializers.ModelSerializer):
+        class Meta:
+            model = NewsletterSubscriber
+            fields = [
+                'id', 
+                'email'
+            ]

@@ -2,3 +2,8 @@ venv/
 /backend/api/migrations
 /backend/api/__pycache__
 *.sqlite3
+/backend/authentication/__pycache__
+/backend/authentication/__pycache__
+/backend/authentication/__pycache__
+/backend/authentication/__pycache__
+/backend/authentication/__pycache__

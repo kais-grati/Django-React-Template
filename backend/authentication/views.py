@@ -6,7 +6,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.exceptions import TokenError
 from django.contrib.auth import authenticate
 from backend.settings import SIMPLE_JWT, DEBUG
-from .serializers import RegistrationSerializer, LoginSerializer, UserSerializer
+from .serializers import RegistrationSerializer, LoginSerializer, UserSerializer, NewsletterSubscriberSerializer
 from .models import CustomUser
 
 
@@ -130,3 +130,7 @@ class LogoutView(APIView):
         response.delete_cookie('refreshToken', samesite='Strict')
         
         return response
+    
+class NewsletterSubscribe(generics.CreateAPIView):
+    permission_classes = [AllowAny]
+    serializer_class = NewsletterSubscriberSerializer
