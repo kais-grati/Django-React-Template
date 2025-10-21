@@ -30,7 +30,7 @@ This template allows you to quickly bootstrap SaaS projects without reinventing 
 ## Getting Started
 1. Clone the repository:  
    ```bash
-   git clone [<repository-url>](https://github.com/kais-grati/Django-React-Template.git)
+   git clone https://github.com/kais-grati/Django-React-Template.git
    ```  
 2. Install frontend dependencies:  
    ```bash
